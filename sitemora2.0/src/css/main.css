@@ -1,0 +1,43 @@
+.gradient {
+    background: linear-gradient(90deg, #d53369 0%, #621c75 100%);
+  }
+
+.shadow-navbar{
+    background: linear-gradient(90deg, #d53369 0%, #621c75 100%) !important;  
+  }
+
+
+@media (max-width: 640px) {
+
+    .display-none-s{
+        display: none !important;
+    }
+
+    .leading-3{
+        line-height: 3.5rem !important;
+    }
+
+    .sm-text-center{
+      text-align: center !important;
+    }
+
+    .sm-justify-center{
+      justify-content: center;
+    }
+
+    .sm-button-content{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .sm-button-content a{
+      display: flex;
+      justify-content: center;
+    }
+
+    .h-content-links{
+      height: auto;
+    }
+
+}

@@ -1,12 +1,61 @@
 import React from "react"
 
+import logo from '../assets/img/moralogo.png'; // Tell webpack this JS file uses this image
+import igLogo from '../assets/img/instagram-logo.svg'; // Tell webpack this JS file uses this image
+import fbLogo from '../assets/img/facebook-logo.svg'; // Tell webpack this JS file uses this image
+import lnLogo from '../assets/img/linkedin-logo.svg'; // Tell webpack this JS file uses this image
+
+
+
+      var scrollpos = window.scrollY;
+      var header = document.getElementById("header");
+      var navcontent = document.getElementById("nav-content");
+      var navaction = document.getElementById("navAction");
+      var toToggle = document.querySelectorAll(".toggleColour");
+
+      document.addEventListener("scroll", function () {
+        /*Apply classes for slide in bar*/
+        scrollpos = window.scrollY;
+
+        if (scrollpos > 10) {
+          header.classList.add("bg-white");
+          navaction.classList.remove("bg-white");
+          navaction.classList.add("gradient");
+          navaction.classList.remove("text-gray-800");
+          navaction.classList.add("text-white");
+          //Use to switch toggleColour colours
+          for (var i = 0; i < toToggle.length; i++) {
+            toToggle[i].classList.add("text-gray-800");
+            toToggle[i].classList.remove("text-white");
+          }
+          header.classList.add("shadow");
+          navcontent.classList.remove("bg-gray-100");
+          navcontent.classList.add("bg-white");
+        } else {
+          header.classList.remove("bg-white");
+          navaction.classList.remove("gradient");
+          navaction.classList.add("bg-white");
+          navaction.classList.remove("text-white");
+          navaction.classList.add("text-gray-800");
+          //Use to switch toggleColour colours
+          for (var i = 0; i < toToggle.length; i++) {
+            toToggle[i].classList.add("text-white");
+            toToggle[i].classList.remove("text-gray-800");
+          }
+
+          header.classList.remove("shadow");
+          navcontent.classList.remove("bg-white");
+          navcontent.classList.add("bg-gray-100");
+        }
+      });
+
 const Navbar = () => (
     <section>
-        <nav id="header" className="fixed w-full z-30 top-0 shadow-navbar">
+      <nav id="header" className="fixed w-full z-30 top-0 shadow-navbar">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
           <a className=" no-underline hover:no-underline font-bold text-2xl lg:text-4xl flex items-center" style={{color:'white'}} href="#">
-              <img className="h-12" src="assets/img/moralogo.png" alt="" />
+            <img className="h-12" src={logo} alt="logoIG" />
             SALVADOR MORA
           </a>
         </div>
@@ -17,36 +66,23 @@ const Navbar = () => (
             </svg>
           </button>
         </div>
-        <div className="w-full shadow-navbar lg:hidden flex flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20 justify-end	" id="nav-content">
-            <a href="https://www.instagram.com/ladelaintuicion/" className="mr-3" target="_black">
-                <img className="h-12" src="assets/img/instagram-logo.svg" alt="" />
-            </a>
-            <a href="https://www.facebook.com/soyelmora" className="mr-3" target="_black">
-                <img className="h-12" src="assets/img/facebook-logo.svg" alt="" />
-            </a>
-            <a href="https://www.linkedin.com/in/mora-developer/" className="mr-3" target="_black">
-                <img className="h-12" src="assets/img/linkedin-logo.svg" alt="" />
-            </a>
-          <button
-            id="navAction"
-          ></button>
-        </div>
+
         <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 lg:bg-transparent text-black p-4 lg:p-0 z-20 bg-gray-100" id="nav-content">
             <ul className="list-reset lg:flex justify-end flex-1 items-center">
               <li className="mr-3">
                 <a href="https://www.instagram.com/ladelaintuicion/" target="_black">
-                  <img className="h-12" src="assets/img/instagram-logo.svg" alt="" />
+                  <img className="h-12" src={igLogo} alt="logoIG" />
                 </a>
               </li>
               <li className="mr-3">
                   <a href="https://www.facebook.com/soyelmora" target="_black">
-                      <img className="h-12" src="assets/img/facebook-logo.svg" alt="" />
+                    <img className="h-12" src={fbLogo} alt="logoIG" />
                   </a>
               </li>
               <li className="mr-3">
                   <a href="https://www.linkedin.com/in/mora-developer/" target="_black">
-                      <img className="h-12" src="assets/img/linkedin-logo.svg" alt="" />
-                    </a>
+                    <img className="h-12" src={lnLogo} alt="logoIG" />
+                  </a>
               </li>
             </ul>
             <button id="navAction" className="bg-white text-gray-800"></button>
@@ -57,5 +93,7 @@ const Navbar = () => (
     </nav>
     </section>
     )
+
+    
 
 export default Navbar
